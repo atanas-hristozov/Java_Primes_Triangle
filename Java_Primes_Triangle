@@ -1,0 +1,45 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.nextLine();
+        int n = Integer.parseInt(input);
+        int[] triangle = new int[n];
+        primeTriangle(triangle);
+    }
+    public static void primeTriangle (int a[]) {
+            int count = 0;
+        for (int i = 1; i <= a.length; i++) {
+            boolean isPrime = true;
+            for (int j = 2; j < i; j++) {
+                if (i % j == 0) {
+                    isPrime = false;
+                    break;
+                }
+            }
+            if (isPrime) {
+                a[count] = i;
+                count++;
+            }
+        }
+        int totalPrimes = 1 + count;
+        for (int i = 0; i <= totalPrimes; i++) {
+            for (int j = 1; j <= a[i]; j++) {
+                boolean isPrime = true;
+                for (int k = 2; k < j; k++) {
+                    if (j % k == 0) {
+                        isPrime = false;
+                        break;
+                    }
+                }
+                if (isPrime) {
+                    System.out.print("1");
+                } else {
+                    System.out.print("0");
+                }
+            }
+            System.out.println();
+        }
+    }
+}
